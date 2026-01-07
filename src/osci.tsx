@@ -533,7 +533,19 @@ export default function App() {
   return (
     <div className="min-h-screen bg-slate-950">
       <nav className="sticky top-0 z-10 border-b border-slate-800 bg-slate-950/90 backdrop-blur px-6 py-3 flex items-center gap-3">
-        <a href="#/docente" className={`px-3 py-1.5 rounded-xl ${route.includes("docente")?"bg-slate-800 text-white":"text-slate-300 hover:bg-slate-900"}`}>Docente</a>
+       {!route.includes("studenti") && (
+  <a
+    href="#/docente"
+    className={`px-3 py-1.5 rounded-xl ${
+      route.includes("docente")
+        ? "bg-slate-800 text-white"
+        : "text-slate-300 hover:bg-slate-900"
+    }`}
+  >
+    Docente
+  </a>
+)}
+
         <a href="#/studenti" className={`px-3 py-1.5 rounded-xl ${route.includes("studenti")?"bg-slate-800 text-white":"text-slate-300 hover:bg-slate-900"}`}>Studenti</a>
         <div className="ml-auto text-slate-400 text-sm">Oscilloscopio Didattico • 3 Canali • Sincronizzato</div>
       </nav>
