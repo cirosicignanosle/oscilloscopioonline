@@ -481,7 +481,7 @@ function StudentPage({ shared }: any) {
           <h2 className="font-semibold mb-4">Controlli Scala</h2>
           <div className="grid grid-cols-2 gap-3 text-sm">
             <NumberField label="V/div" value={view.vPerDiv} step={0.1} min={0.1} onChange={(v: number) => set("vPerDiv", v)} />
-            <NumberField label="s/div" value={view.sPerDiv} step={0.0001} min={0.000001} onChange={(v: number) => set("sPerDiv", v)} />
+            <NumberField label="s/div" value={view.sPerDiv} step={0.0001} min={0.0001} onChange={(v: number) => set("sPerDiv", v)} /> 
             <NumberField label="Offset V (V)" value={view.vOffset} step={0.1} onChange={(v: number) => set("vOffset", v)} />
             <NumberField label="Offset t (s)" value={view.tOffset} step={0.0001} onChange={(v: number) => set("tOffset", v)} />
           </div>
