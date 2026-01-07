@@ -229,13 +229,35 @@ function ScopeCanvas({ shared, view, canvasId = "scope-canvas" }: any) {
 // INPUT HELPERS COMPONENTS
 // =======================
 function NumberField({ label, value, onChange, step = 1, min }: any) {
+  const quantize = (n: number) => {
+    if (!Number.isFinite(n)) return n;
+
+    const s = Number(step) || 1;
+    const decimals = (s.toString().split(".")[1] || "").length;
+
+    // Aggancia il numero al "reticolo" del passo (step) e ripulisce i float
+    const q = Math.round(n / s) * s;
+    return Number(q.toFixed(decimals));
+  };
+
   return (
     <label className="flex flex-col gap-1 text-slate-300 text-sm">
       <span>{label}</span>
-      <input type="number" step={step} min={min} value={value} onChange={(e) => onChange(parseFloat((e.target as HTMLInputElement).value))} className="bg-slate-800 border border-slate-700 rounded-xl p-2" />
+      <input
+        type="number"
+        step={step}
+        min={min}
+        value={value}
+        onChange={(e) => {
+          const raw = parseFloat((e.target as HTMLInputElement).value);
+          onChange(quantize(raw));
+        }}
+        className="bg-slate-800 border border-slate-700 rounded-xl p-2"
+      />
     </label>
   );
 }
+
 
 function TextField({ label, value, onChange, placeholder }: any) {
   return (
